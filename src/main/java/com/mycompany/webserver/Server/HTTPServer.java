@@ -6,8 +6,8 @@ import java.net.*;
 public class HTTPServer {
 
   public static void main(String[] args) throws IOException {
-    ServerSocket serverSocket = new ServerSocket(35002);
-    System.out.println("Servidor iniciado en el puerto 35002");
+    ServerSocket serverSocket = new ServerSocket(35000);
+    System.out.println("Servidor iniciado en el puerto 35000");
 
     while (true) {
       try (Socket clientSocket = serverSocket.accept()) {
@@ -32,45 +32,34 @@ public class HTTPServer {
     String method = requestParts[0];
     String path = requestParts[1];
 
-    if (path.startsWith("api/")) {
+    if (path.startsWith("/api")) {
       String jsonResponse = APIHandler.handleAPIRequest(path);
       sendResponse(out, "200 OK", "application/json", jsonResponse);
     } else {
       if (path.equals("/") || path.equals("/index.html")) {
-        File indexFile = new File(
-          "src\\main\\java\\com\\mycompany\\webserver\\Public\\index.html"
-        );
-        if (indexFile.exists()) {
-          BufferedReader reader = new BufferedReader(new FileReader(indexFile));
-          StringBuilder contentBuilder = new StringBuilder();
-          String line;
-          while ((line = reader.readLine()) != null) {
-            contentBuilder.append(line).append("\n");
-          }
-          reader.close();
-          String fileResponse = contentBuilder.toString();
-          sendResponse(out, "200 OK", "text/html", fileResponse);
-        } else {
-          sendResponse(
-            out,
-            "404 Not Found",
-            "text/html",
-            "<h1>404 Not Found</h1>"
-          );
+        path = "/index.html"; // Asegurarse de que la ruta sea correcta
+      }
+      File staticFile = new File(
+        "src/main/java/com/mycompany/webserver/Public" + path
+      );
+      if (staticFile.exists() && staticFile.isFile()) {
+        BufferedReader reader = new BufferedReader(new FileReader(staticFile));
+        StringBuilder contentBuilder = new StringBuilder();
+        String line;
+        while ((line = reader.readLine()) != null) {
+          contentBuilder.append(line).append("\n");
         }
-      } else {
-        String fileResponse = FileHandler.serveStaticFile(path);
+        reader.close();
+        String fileResponse = contentBuilder.toString();
         String contentType = FileHandler.getContentType(path);
-        if (fileResponse == null) {
-          sendResponse(
-            out,
-            "404 Not Found",
-            "text/html",
-            "<h1>404 Not Found</h1>"
-          );
-        } else {
-          sendResponse(out, "200 OK", contentType, fileResponse);
-        }
+        sendResponse(out, "200 OK", contentType, fileResponse);
+      } else {
+        sendResponse(
+          out,
+          "404 Not Found",
+          "text/html",
+          "<h1>404 Not Found</h1>"
+        );
       }
     }
     in.close();

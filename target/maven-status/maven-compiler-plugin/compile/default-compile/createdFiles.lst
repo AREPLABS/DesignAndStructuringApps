@@ -1,6 +1,0 @@
-com\mycompany\webserver\HTTPServer.class
-com\mycompany\webserver\URLParser.class
-com\mycompany\webserver\EchoClient.class
-com\mycompany\webserver\Webserver.class
-com\mycompany\webserver\EchoServer.class
-com\mycompany\webserver\URLReader.class
