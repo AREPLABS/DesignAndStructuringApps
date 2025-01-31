@@ -8,7 +8,7 @@ public class APIHandler {
     } else if (path.equals("/api/libros")) {
       return (
         "{ \"libros\": [" +
-        "{ \"titulo\": \"El señor de los anillos\", \"autor\": \"J.R.R. Tolkien\", \"anio\": 1954, \"imagen\": \"/imagenes/lotr.jpg\" }," +
+        "{ \"titulo\": \"El señor de los anillos\", \"autor\": \"J.R.R. Tolkien\", \"anio\": 1954, \"imagen\": \"/src/main/resources/imagenes/lotr.jpg\" }," +
         "{ \"titulo\": \"1984\", \"autor\": \"George Orwell\", \"anio\": 1949, \"imagen\": \"/imagenes/1984.jpg\" }," +
         "{ \"titulo\": \"Matar a un ruiseñor\", \"autor\": \"Harper Lee\", \"anio\": 1960, \"imagen\": \"/imagenes/mockingbird.jpg\" }," +
         "{ \"titulo\": \"Orgullo y prejuicio\", \"autor\": \"Jane Austen\", \"anio\": 1813, \"imagen\": \"/imagenes/pride.jpg\" }," +
@@ -22,7 +22,7 @@ public class APIHandler {
         "{ \"titulo\": \"Fahrenheit 451\", \"autor\": \"Ray Bradbury\", \"anio\": 1953, \"imagen\": \"/imagenes/fahrenheit.jpg\" }," +
         "{ \"titulo\": \"En busca del tiempo perdido\", \"autor\": \"Marcel Proust\", \"anio\": 1913, \"imagen\": \"/imagenes/tiempo.jpg\" }," +
         "{ \"titulo\": \"El extranjero\", \"autor\": \"Albert Camus\", \"anio\": 1942, \"imagen\": \"/imagenes/extranjero.jpg\" }," +
-        "{ \"titulo\": \"Las aventuras de Sherlock Holmes\", \"autor\": \"Arthur Conan Doyle\", \"anio\": 1892, \"imagen\": \"/imagenes/sherlock.jpg\" }" +
+        "{ \"titulo\": \"Las aventuras de Sherlock Holmes\", \"autor\": \"Arthur Conan Doyle\", \"anio\": 1892, \"imagen\": \"/imagenes/sherlock.png\" }" +
         "] }"
       );
     } else {

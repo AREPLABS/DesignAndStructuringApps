@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 
 public class FileHandler {
 
-  private static final String BASE_PATH = "public"; // Carpeta donde estarán los archivos
+  private static final String BASE_PATH = "/src/main/resources"; // Carpeta donde estarán los archivos
 
   public static byte[] serveStaticFile(String path) throws IOException {
     if (path.equals("/")) {

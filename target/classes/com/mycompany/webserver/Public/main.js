@@ -6,18 +6,15 @@ const imagenes = {
 };
 
 function crearTarjetaLibro(libro) {
-  const imagenSrc = imagenes[libro.titulo] || "https://via.placeholder.com/150";
   return `
     <div class="libro-card">
-      <img class="libro-imagen" src="${imagenSrc}" alt="${libro.titulo}">
+      <img class="libro-imagen" src="${libro.imagen}" alt="${libro.titulo}">
       <h2 class="libro-titulo">${libro.titulo}</h2>
       <p class="libro-autor">por ${libro.autor}</p>
       <p class="libro-anio">Publicado en ${libro.anio}</p>
     </div>
   `;
 }
-
-
 
 function mostrarLibros() {
   fetch('/api/libros')
