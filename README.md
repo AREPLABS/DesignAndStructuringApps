@@ -33,7 +33,6 @@ Este es un prototipo de un servidor web desarrollado en Java, utilizando Maven, 
 Una vez que hayas instalado las dependencias y ejecutado el servidor, el servidor estará funcionando en `http://localhost:35000`. 
 
 - **Página principal**: `http://localhost:35000/` 
-- **API de libros**: `http://localhost:35000/api/libros`
 
 ## Arquitectura
 
